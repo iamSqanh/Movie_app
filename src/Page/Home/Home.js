@@ -3,6 +3,9 @@ import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import {AiFillStar} from 'react-icons/ai'
+
+import MovieList from "../../Components/MovieList";
 
 function Home() {
   const [popularMovie, setPopularMovie] = useState([]);
@@ -32,12 +35,12 @@ function Home() {
                     </div>
                     <div className="absolute p-20 bottom-0 h-[70%] w-full flex flex-col items-center justify-end opacity-100 transition-opacity duration-300 hover:opacity-100">
                         <div className="font-black text-[64px] mb-2 text-left">{movie ? movie.original_title : ""}</div>
-                        <div className="text-[32px] mb-4">
+                        <div className="text-[32px] mb-4 flex items-center">
                             {movie ? movie.release_date : ""}
                             <span className="ml-12">
                                 {movie ? movie.vote_average : ""}
-                                <span>icon</span>
                             </span>
+                            <span><AiFillStar /></span> 
                         </div>
                         <div className="text-[16px] flex text-left w-[50%] mb-1 italic">{movie ? movie.overview : ""}</div>
                     </div>
@@ -45,6 +48,7 @@ function Home() {
             ))
         }
       </Carousel>
+      <MovieList />
     </div>
   );
 }
